@@ -1,0 +1,665 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D0A0A0A0A0A0A0A0A0A0A001 /* Wizig in Frameworks */ = {isa = PBXBuildFile; productRef = D0A0A0A0A0A0A0A0A0A0A002 /* Wizig */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AB2597B32F532F6800C45779 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AB25979B2F532F6600C45779 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AB2597A22F532F6600C45779;
+			remoteInfo = WizigApp;
+		};
+		AB2597BD2F532F6800C45779 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AB25979B2F532F6600C45779 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AB2597A22F532F6600C45779;
+			remoteInfo = WizigApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AB2597A32F532F6600C45779 /* WizigApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WizigApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB2597B22F532F6800C45779 /* WizigAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WizigAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB2597BC2F532F6800C45779 /* WizigAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WizigAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		AB2597A52F532F6600C45779 /* WizigApp */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = WizigApp;
+			sourceTree = "<group>";
+		};
+		AB2597B52F532F6800C45779 /* WizigAppTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = WizigAppTests;
+			sourceTree = "<group>";
+		};
+		AB2597BF2F532F6800C45779 /* WizigAppUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = WizigAppUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AB2597A02F532F6600C45779 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0A0A0A0A0A0A0A0A0A0A001 /* Wizig in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB2597AF2F532F6800C45779 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB2597B92F532F6800C45779 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AB25979A2F532F6600C45779 = {
+			isa = PBXGroup;
+			children = (
+				AB2597A52F532F6600C45779 /* WizigApp */,
+				AB2597B52F532F6800C45779 /* WizigAppTests */,
+				AB2597BF2F532F6800C45779 /* WizigAppUITests */,
+				AB2597A42F532F6600C45779 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AB2597A42F532F6600C45779 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AB2597A32F532F6600C45779 /* WizigApp.app */,
+				AB2597B22F532F6800C45779 /* WizigAppTests.xctest */,
+				AB2597BC2F532F6800C45779 /* WizigAppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AB2597A22F532F6600C45779 /* WizigApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AB2597C62F532F6800C45779 /* Build configuration list for PBXNativeTarget "WizigApp" */;
+			buildPhases = (
+				AB25979F2F532F6600C45779 /* Sources */,
+				AB2597A02F532F6600C45779 /* Frameworks */,
+				AB2597A12F532F6600C45779 /* Resources */,
+				D0A0A0A0A0A0A0A0A0A0AF01 /* Wizig Build iOS FFI */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				AB2597A52F532F6600C45779 /* WizigApp */,
+			);
+			name = WizigApp;
+			packageProductDependencies = (
+				D0A0A0A0A0A0A0A0A0A0A002 /* Wizig */,
+			);
+			productName = WizigApp;
+			productReference = AB2597A32F532F6600C45779 /* WizigApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AB2597B12F532F6800C45779 /* WizigAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AB2597C92F532F6800C45779 /* Build configuration list for PBXNativeTarget "WizigAppTests" */;
+			buildPhases = (
+				AB2597AE2F532F6800C45779 /* Sources */,
+				AB2597AF2F532F6800C45779 /* Frameworks */,
+				AB2597B02F532F6800C45779 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AB2597B42F532F6800C45779 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				AB2597B52F532F6800C45779 /* WizigAppTests */,
+			);
+			name = WizigAppTests;
+			packageProductDependencies = (
+			);
+			productName = WizigAppTests;
+			productReference = AB2597B22F532F6800C45779 /* WizigAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		AB2597BB2F532F6800C45779 /* WizigAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AB2597CC2F532F6800C45779 /* Build configuration list for PBXNativeTarget "WizigAppUITests" */;
+			buildPhases = (
+				AB2597B82F532F6800C45779 /* Sources */,
+				AB2597B92F532F6800C45779 /* Frameworks */,
+				AB2597BA2F532F6800C45779 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AB2597BE2F532F6800C45779 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				AB2597BF2F532F6800C45779 /* WizigAppUITests */,
+			);
+			name = WizigAppUITests;
+			packageProductDependencies = (
+			);
+			productName = WizigAppUITests;
+			productReference = AB2597BC2F532F6800C45779 /* WizigAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AB25979B2F532F6600C45779 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2620;
+				LastUpgradeCheck = 2620;
+				TargetAttributes = {
+					AB2597A22F532F6600C45779 = {
+						CreatedOnToolsVersion = 26.2;
+						DevelopmentTeam = "";
+					};
+					AB2597B12F532F6800C45779 = {
+						CreatedOnToolsVersion = 26.2;
+						TestTargetID = AB2597A22F532F6600C45779;
+					};
+					AB2597BB2F532F6800C45779 = {
+						CreatedOnToolsVersion = 26.2;
+						TestTargetID = AB2597A22F532F6600C45779;
+					};
+				};
+			};
+			buildConfigurationList = AB25979E2F532F6600C45779 /* Build configuration list for PBXProject "WizigApp" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AB25979A2F532F6600C45779;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				D0A0A0A0A0A0A0A0A0A0A003 /* XCLocalSwiftPackageReference "../.wizig/sdk/ios" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = AB2597A42F532F6600C45779 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AB2597A22F532F6600C45779 /* WizigApp */,
+				AB2597B12F532F6800C45779 /* WizigAppTests */,
+				AB2597BB2F532F6800C45779 /* WizigAppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AB2597A12F532F6600C45779 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB2597B02F532F6800C45779 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB2597BA2F532F6800C45779 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D0A0A0A0A0A0A0A0A0A0AF01 /* Wizig Build iOS FFI */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/../.wizig/generated/zig/WizigGeneratedFfiRoot.zig",
+				"$(SRCROOT)/../.wizig/generated/ios/wizig.h",
+				"$(SRCROOT)/../.wizig/generated/ios/WizigGeneratedApi.h",
+				"$(SRCROOT)/../.wizig/generated/ios/WizigFFI.h",
+				"$(SRCROOT)/../.wizig/generated/ios/module.modulemap",
+				"$(SRCROOT)/../.wizig/runtime/core/root.zig",
+				"$(SRCROOT)/../lib/WizigGeneratedAppModule.zig",
+			);
+			name = "Wizig Build iOS FFI";
+			outputPaths = (
+				"$(TARGET_BUILD_DIR)/$(FRAMEWORKS_FOLDER_PATH)/WizigFFI.framework/WizigFFI",
+				"$(TARGET_BUILD_DIR)/$(FRAMEWORKS_FOLDER_PATH)/WizigFFI.framework/Info.plist",
+				"$(TARGET_BUILD_DIR)/$(FRAMEWORKS_FOLDER_PATH)/WizigFFI.framework/_CodeSignature/CodeResources",
+				"$(SRCROOT)/../.wizig/generated/ios/WizigFFI.xcframework/Info.plist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -eu\nAPP_ROOT=\"${SRCROOT}/..\"\nGENERATED_ROOT=\"${APP_ROOT}/.wizig/generated/zig\"\nRUNTIME_ROOT=\"${APP_ROOT}/.wizig/runtime\"\nLIB_ROOT=\"${APP_ROOT}/lib\"\nGENERATED_IOS_ROOT=\"${APP_ROOT}/.wizig/generated/ios\"\nGENERATED_IOS_CANONICAL_HEADER=\"${GENERATED_IOS_ROOT}/wizig.h\"\nGENERATED_IOS_API_HEADER=\"${GENERATED_IOS_ROOT}/WizigGeneratedApi.h\"\nGENERATED_IOS_FRAMEWORK_HEADER=\"${GENERATED_IOS_ROOT}/WizigFFI.h\"\nGENERATED_IOS_MODULEMAP=\"${GENERATED_IOS_ROOT}/module.modulemap\"\nOUT_DIR=\"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}\"\nOUT_FRAMEWORK_DIR=\"${OUT_DIR}/WizigFFI.framework\"\nOUT_FRAMEWORK_BIN=\"${OUT_FRAMEWORK_DIR}/WizigFFI\"\nOUT_FRAMEWORK_INFO=\"${OUT_FRAMEWORK_DIR}/Info.plist\"\nTMP_BASE=\"${TARGET_TEMP_DIR:-${TEMP_DIR:-/tmp}}\"\nTMP_FRAMEWORK_INFO=\"${TMP_BASE}/WizigFFI-Info.plist\"\nTMP_DEVICE_FRAMEWORK_DIR=\"${TMP_BASE}/wizig-ios-device/WizigFFI.framework\"\nTMP_DEVICE_FRAMEWORK_BIN=\"${TMP_DEVICE_FRAMEWORK_DIR}/WizigFFI\"\nTMP_SIM_ARM64_FRAMEWORK_DIR=\"${TMP_BASE}/wizig-ios-sim-arm64/WizigFFI.framework\"\nTMP_SIM_ARM64_FRAMEWORK_BIN=\"${TMP_SIM_ARM64_FRAMEWORK_DIR}/WizigFFI\"\nTMP_SIM_X64_FRAMEWORK_DIR=\"${TMP_BASE}/wizig-ios-sim-x86_64/WizigFFI.framework\"\nTMP_SIM_X64_FRAMEWORK_BIN=\"${TMP_SIM_X64_FRAMEWORK_DIR}/WizigFFI\"\nTMP_SIM_UNIVERSAL_FRAMEWORK_DIR=\"${TMP_BASE}/wizig-ios-sim-universal/WizigFFI.framework\"\nTMP_SIM_UNIVERSAL_FRAMEWORK_BIN=\"${TMP_SIM_UNIVERSAL_FRAMEWORK_DIR}/WizigFFI\"\nTMP_XCFRAMEWORK_DIR=\"${TMP_BASE}/WizigFFI.xcframework\"\nXCFRAMEWORK_DIR=\"${GENERATED_IOS_ROOT}/WizigFFI.xcframework\"\nmkdir -p \"${OUT_DIR}\" \"${GENERATED_IOS_ROOT}\"\nrm -rf \"$(dirname \"${TMP_DEVICE_FRAMEWORK_DIR}\")\" \"$(dirname \"${TMP_SIM_ARM64_FRAMEWORK_DIR}\")\" \"$(dirname \"${TMP_SIM_X64_FRAMEWORK_DIR}\")\" \"$(dirname \"${TMP_SIM_UNIVERSAL_FRAMEWORK_DIR}\")\" \"${TMP_XCFRAMEWORK_DIR}\"\nfor required_file in \"${GENERATED_IOS_CANONICAL_HEADER}\" \"${GENERATED_IOS_API_HEADER}\" \"${GENERATED_IOS_FRAMEWORK_HEADER}\" \"${GENERATED_IOS_MODULEMAP}\"; do\n  if [ ! -f \"${required_file}\" ]; then\n    echo \"error: missing generated iOS framework interop artifact: ${required_file}\" >&2\n    exit 1\n  fi\ndone\nCACHE_BASE=\"${TMP_BASE}\"\nZIG_LOCAL_CACHE_DIR=\"${CACHE_BASE}/wizig-zig-local-cache\"\nZIG_GLOBAL_CACHE_DIR=\"${CACHE_BASE}/wizig-zig-global-cache\"\nmkdir -p \"${ZIG_LOCAL_CACHE_DIR}\" \"${ZIG_GLOBAL_CACHE_DIR}\"\nexport ZIG_LOCAL_CACHE_DIR\nexport ZIG_GLOBAL_CACHE_DIR\nZIG_OPTIMIZE=\"ReleaseFast\"\ncase \"${CONFIGURATION:-}\" in\n  Debug|*Debug*) ZIG_OPTIMIZE=\"Debug\" ;;\nesac\nif [ \"${WIZIG_FFI_ALLOW_OPTIMIZE_OVERRIDE:-0}\" = \"1\" ] && [ -n \"${WIZIG_FFI_OPTIMIZE:-}\" ]; then\n  ZIG_OPTIMIZE=\"${WIZIG_FFI_OPTIMIZE}\"\nfi\nARCH_VALUE=\"${CURRENT_ARCH:-}\"\nif [ -z \"${ARCH_VALUE}\" ] || [ \"${ARCH_VALUE}\" = \"undefined_arch\" ]; then\n  ARCH_VALUE=\"${NATIVE_ARCH_ACTUAL:-}\"\nfi\nif [ -z \"${ARCH_VALUE}\" ] || [ \"${ARCH_VALUE}\" = \"undefined_arch\" ]; then\n  set -- ${ARCHS:-}\n  ARCH_VALUE=\"${1:-}\"\nfi\nLOCK_PATH=\"${APP_ROOT}/.wizig/toolchain.lock.json\"\nLOCK_ZIG_VERSION=\"\"\nif [ -f \"${LOCK_PATH}\" ]; then\n  LOCK_ZIG_VERSION=\"$(awk '/\"zig\"[[:space:]]*:[[:space:]]*\{/{inzig=1;next} inzig&&/^[[:space:]]*\}/{inzig=0} inzig&&/\"detected_version\"[[:space:]]*:[[:space:]]*\"/{line=$0; sub(/.*\"detected_version\"[[:space:]]*:[[:space:]]*\"/,\"\",line); sub(/\".*/,\"\",line); print line; exit}' \"${LOCK_PATH}\" || true)\"\n  if [ -z \"${LOCK_ZIG_VERSION}\" ]; then\n    LOCK_ZIG_VERSION=\"$(awk '/\"zig\"[[:space:]]*:[[:space:]]*\{/{inzig=1;next} inzig&&/^[[:space:]]*\}/{inzig=0} inzig&&/\"min_version\"[[:space:]]*:[[:space:]]*\"/{line=$0; sub(/.*\"min_version\"[[:space:]]*:[[:space:]]*\"/,\"\",line); sub(/\".*/,\"\",line); print line; exit}' \"${LOCK_PATH}\" || true)\"\n  fi\nfi\nversion_at_least() {\n  awk -v have=\"$1\" -v need=\"$2\" 'function norm(v,a,n,i){gsub(/[^0-9.]/,\".\",v); n=split(v,a,\".\"); for(i=1;i<=4;i++) if(a[i]==\"\") a[i]=0;} BEGIN{norm(have,H); norm(need,N); for(i=1;i<=4;i++){if((H[i]+0)>(N[i]+0)) exit 0; if((H[i]+0)<(N[i]+0)) exit 1;} exit 0;}'\n}\ndetect_zig_version() {\n  \"$1\" version 2>/dev/null | head -n 1 | tr -d '\\r'\n}\nZIG_BIN=\"${ZIG_BINARY:-}\"\nWIZIG_ZIG_CACHE_ROOT=\"${WIZIG_ZIG_CACHE_ROOT:-${HOME}/Library/Caches/wizig/zig}\"\nif [ -z \"${ZIG_BIN}\" ] && [ -n \"${LOCK_ZIG_VERSION}\" ]; then\n  LOCKED_ROOT=\"${WIZIG_ZIG_CACHE_ROOT}/${LOCK_ZIG_VERSION}\"\n  if [ -x \"${LOCKED_ROOT}/zig\" ]; then\n    ZIG_BIN=\"${LOCKED_ROOT}/zig\"\n  else\n    ZIG_BIN=\"$(find \"${LOCKED_ROOT}\" -maxdepth 3 -type f -name zig -perm -111 2>/dev/null | head -n 1 || true)\"\n  fi\nfi\nif [ -z \"${ZIG_BIN}\" ]; then\n  if command -v zig >/dev/null 2>&1; then\n    ZIG_BIN=\"$(command -v zig)\"\n  fi\nfi\nif [ -z \"${ZIG_BIN}\" ]; then\n  for candidate in \"${HOME}/.zvm/master/zig\" \"${HOME}/.zvm/bin/zig\" \"${HOME}/.local/bin/zig\" \"/opt/homebrew/bin/zig\" \"/usr/local/bin/zig\"; do\n    if [ -x \"${candidate}\" ]; then\n      ZIG_BIN=\"${candidate}\"\n      break\n    fi\n  done\nfi\nif [ -z \"${ZIG_BIN}\" ] && [ -n \"${LOCK_ZIG_VERSION}\" ] && [ \"${WIZIG_ZIG_AUTO_INSTALL:-0}\" = \"1\" ]; then\n  case \"$(uname -s)\" in Darwin) ZIG_OS=macos ;; *) ZIG_OS=\"\" ;; esac\n  case \"$(uname -m)\" in arm64|aarch64) ZIG_ARCH=aarch64 ;; x86_64) ZIG_ARCH=x86_64 ;; *) ZIG_ARCH=\"\" ;; esac\n  if [ -n \"${ZIG_OS}\" ] && [ -n \"${ZIG_ARCH}\" ]; then\n    ZIG_ARCHIVE=\"zig-${ZIG_OS}-${ZIG_ARCH}-${LOCK_ZIG_VERSION}.tar.xz\"\n    ZIG_URL_TEMPLATE=\"${WIZIG_ZIG_DOWNLOAD_URL_TEMPLATE:-https://ziglang.org/download/{version}/{archive}}\"\n    ZIG_URL=\"${WIZIG_ZIG_DOWNLOAD_URL:-$(printf '%s' \"${ZIG_URL_TEMPLATE}\" | sed \"s|{version}|${LOCK_ZIG_VERSION}|g; s|{archive}|${ZIG_ARCHIVE}|g\")}\"\n    ZIG_INSTALL_ROOT=\"${WIZIG_ZIG_CACHE_ROOT}/${LOCK_ZIG_VERSION}\"\n    ZIG_ARCHIVE_PATH=\"${TMP_BASE}/wizig-zig-${LOCK_ZIG_VERSION}.tar.xz\"\n    ZIG_EXTRACT_ROOT=\"${TMP_BASE}/wizig-zig-${LOCK_ZIG_VERSION}\"\n    mkdir -p \"${WIZIG_ZIG_CACHE_ROOT}\"\n    rm -rf \"${ZIG_EXTRACT_ROOT}\"\n    if ! curl -fsSL \"${ZIG_URL}\" -o \"${ZIG_ARCHIVE_PATH}\"; then\n      echo \"error: failed to download locked Zig toolchain from ${ZIG_URL}\" >&2\n      exit 1\n    fi\n    mkdir -p \"${ZIG_EXTRACT_ROOT}\"\n    if ! tar -xJf \"${ZIG_ARCHIVE_PATH}\" -C \"${ZIG_EXTRACT_ROOT}\"; then\n      echo \"error: failed to extract downloaded Zig archive ${ZIG_ARCHIVE_PATH}\" >&2\n      exit 1\n    fi\n    rm -rf \"${ZIG_INSTALL_ROOT}\"\n    mkdir -p \"${ZIG_INSTALL_ROOT}\"\n    cp -R \"${ZIG_EXTRACT_ROOT}/.\" \"${ZIG_INSTALL_ROOT}\"\n    ZIG_BIN=\"$(find \"${ZIG_INSTALL_ROOT}\" -maxdepth 3 -type f -name zig -perm -111 | head -n 1 || true)\"\n  fi\nfi\nif [ -z \"${ZIG_BIN}\" ]; then\n  echo \"error: zig is not installed or discoverable (PATH/ZIG_BINARY/common locations); required for Wizig iOS FFI build\" >&2\n  if [ -n \"${LOCK_ZIG_VERSION}\" ]; then\n    echo \"hint: set WIZIG_ZIG_AUTO_INSTALL=1 to download locked Zig ${LOCK_ZIG_VERSION}\" >&2\n  fi\n  exit 1\nfi\nif [ -n \"${LOCK_ZIG_VERSION}\" ]; then\n  DETECTED_ZIG_VERSION=\"$(detect_zig_version \"${ZIG_BIN}\")\"\n  if [ -z \"${DETECTED_ZIG_VERSION}\" ]; then\n    echo \"error: failed to resolve Zig version from ${ZIG_BIN}\" >&2\n    exit 1\n  fi\n  if ! version_at_least \"${DETECTED_ZIG_VERSION}\" \"${LOCK_ZIG_VERSION}\"; then\n    if [ \"${WIZIG_FFI_ALLOW_TOOLCHAIN_DRIFT:-0}\" = \"1\" ]; then\n      echo \"warning: Zig toolchain drift detected (${DETECTED_ZIG_VERSION} < ${LOCK_ZIG_VERSION}); continuing because WIZIG_FFI_ALLOW_TOOLCHAIN_DRIFT=1\" >&2\n    else\n      echo \"error: Zig toolchain drift detected (${DETECTED_ZIG_VERSION} < ${LOCK_ZIG_VERSION}); set WIZIG_FFI_ALLOW_TOOLCHAIN_DRIFT=1 to bypass\" >&2\n      exit 1\n    fi\n  fi\nfi\nIOS_SDKROOT=\"$(xcrun --sdk iphoneos --show-sdk-path 2>/dev/null || true)\"\nSIM_SDKROOT=\"$(xcrun --sdk iphonesimulator --show-sdk-path 2>/dev/null || true)\"\nif [ -z \"${IOS_SDKROOT}\" ] && [ \"${PLATFORM_NAME}\" = \"iphoneos\" ]; then IOS_SDKROOT=\"${SDKROOT}\"; fi\nif [ -z \"${SIM_SDKROOT}\" ] && [ \"${PLATFORM_NAME}\" = \"iphonesimulator\" ]; then SIM_SDKROOT=\"${SDKROOT}\"; fi\nif [ -z \"${IOS_SDKROOT}\" ] || [ -z \"${SIM_SDKROOT}\" ]; then\n  echo \"error: failed to resolve iphoneos/iphonesimulator SDK paths for Wizig FFI build\" >&2\n  exit 1\nfi\nbuild_ffi_slice() {\n  TARGET_NAME=\"$1\"\n  SYSROOT_PATH=\"$2\"\n  OUTPUT_BIN=\"$3\"\n  mkdir -p \"$(dirname \"${OUTPUT_BIN}\")\"\n  \"${ZIG_BIN}\" build-lib -dynamic -O\"${ZIG_OPTIMIZE}\" -fno-error-tracing -fno-unwind-tables -fstrip -target \"${TARGET_NAME}\" --dep wizig_core --dep wizig_app -Mroot=\"${GENERATED_ROOT}/WizigGeneratedFfiRoot.zig\" -Mwizig_core=\"${RUNTIME_ROOT}/core/root.zig\" -Mwizig_app=\"${LIB_ROOT}/WizigGeneratedAppModule.zig\" --name WizigFFI --sysroot \"${SYSROOT_PATH}\" -L/usr/lib -F/System/Library/Frameworks -lc -femit-bin=\"${OUTPUT_BIN}\"\n}\nfix_macho_text_page_alignment() {\n  python3 -c '\nimport struct,sys\np=sys.argv[1]\nd=bytearray(open(p,\"rb\").read())\nif struct.unpack_from(\"<I\",d,0)[0]!=0xFEEDFACF: sys.exit(0)\no=32\nfor _ in range(struct.unpack_from(\"<I\",d,16)[0]):\n    c,s=struct.unpack_from(\"<II\",d,o)\n    if c==0x19 and d[o+8:o+14]==b\"__TEXT\" and d[o+14]==0:\n        m=0\n        for f in(32,48):\n            v=struct.unpack_from(\"<Q\",d,o+f)[0]\n            a=(v+16383)&~16383\n            if v!=a:\n                struct.pack_into(\"<Q\",d,o+f,a)\n                m=1\n        if m: open(p,\"wb\").write(d)\n        break\n    o+=s\n' \"$1\"\n  /usr/bin/codesign -f -s - \"$1\" 2>/dev/null || true\n}\nbuild_ffi_slice \"aarch64-ios\" \"${IOS_SDKROOT}\" \"${TMP_DEVICE_FRAMEWORK_BIN}\"\nfix_macho_text_page_alignment \"${TMP_DEVICE_FRAMEWORK_BIN}\"\nbuild_ffi_slice \"aarch64-ios-simulator\" \"${SIM_SDKROOT}\" \"${TMP_SIM_ARM64_FRAMEWORK_BIN}\"\nfix_macho_text_page_alignment \"${TMP_SIM_ARM64_FRAMEWORK_BIN}\"\nHAS_SIM_X64=0\nif build_ffi_slice \"x86_64-ios-simulator\" \"${SIM_SDKROOT}\" \"${TMP_SIM_X64_FRAMEWORK_BIN}\"; then\n  fix_macho_text_page_alignment \"${TMP_SIM_X64_FRAMEWORK_BIN}\"\n  HAS_SIM_X64=1\nelse\n  echo \"warning: failed to build x86_64-ios-simulator Wizig FFI slice; continuing with arm64 simulator slice only\" >&2\nfi\nFRAMEWORK_BUNDLE_ID=\"dev.wizig.WizigFFI.framework\"\nif [ -n \"${PRODUCT_BUNDLE_IDENTIFIER:-}\" ]; then\n  FRAMEWORK_BUNDLE_ID=\"${PRODUCT_BUNDLE_IDENTIFIER}.wizigffi\"\nfi\ncat > \"${TMP_FRAMEWORK_INFO}\" <<EOF\n<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">\n<plist version=\"1.0\">\n<dict>\n    <key>CFBundleDevelopmentRegion</key>\n    <string>en</string>\n    <key>CFBundleExecutable</key>\n    <string>WizigFFI</string>\n    <key>CFBundleIdentifier</key>\n    <string>${FRAMEWORK_BUNDLE_ID}</string>\n    <key>CFBundleInfoDictionaryVersion</key>\n    <string>6.0</string>\n    <key>CFBundleName</key>\n    <string>WizigFFI</string>\n    <key>CFBundlePackageType</key>\n    <string>FMWK</string>\n    <key>CFBundleShortVersionString</key>\n    <string>1.0</string>\n    <key>CFBundleVersion</key>\n    <string>1</string>\n</dict>\n</plist>\nEOF\nprepare_framework_metadata() {\n  FRAMEWORK_DIR=\"$1\"\n  mkdir -p \"${FRAMEWORK_DIR}/Headers\" \"${FRAMEWORK_DIR}/Modules\"\n  cp -f \"${TMP_FRAMEWORK_INFO}\" \"${FRAMEWORK_DIR}/Info.plist\"\n  cp -f \"${GENERATED_IOS_CANONICAL_HEADER}\" \"${FRAMEWORK_DIR}/Headers/wizig.h\"\n  cp -f \"${GENERATED_IOS_API_HEADER}\" \"${FRAMEWORK_DIR}/Headers/WizigGeneratedApi.h\"\n  cp -f \"${GENERATED_IOS_FRAMEWORK_HEADER}\" \"${FRAMEWORK_DIR}/Headers/WizigFFI.h\"\n  cp -f \"${GENERATED_IOS_MODULEMAP}\" \"${FRAMEWORK_DIR}/Modules/module.modulemap\"\n}\nprepare_framework_metadata \"${TMP_DEVICE_FRAMEWORK_DIR}\"\nprepare_framework_metadata \"${TMP_SIM_ARM64_FRAMEWORK_DIR}\"\nif [ \"${HAS_SIM_X64}\" = \"1\" ]; then\n  prepare_framework_metadata \"${TMP_SIM_X64_FRAMEWORK_DIR}\"\nfi\nACTIVE_FRAMEWORK_BIN=\"\"\nif [ \"${PLATFORM_NAME}\" = \"iphoneos\" ]; then\n  ACTIVE_FRAMEWORK_BIN=\"${TMP_DEVICE_FRAMEWORK_BIN}\"\nelif [ \"${PLATFORM_NAME}\" = \"iphonesimulator\" ]; then\n  case \"${ARCH_VALUE}\" in\n    arm64) ACTIVE_FRAMEWORK_BIN=\"${TMP_SIM_ARM64_FRAMEWORK_BIN}\" ;;\n    x86_64)\n      if [ \"${HAS_SIM_X64}\" != \"1\" ]; then\n        echo \"error: x86_64 simulator slice required for active build but not available\" >&2\n        exit 1\n      fi\n      ACTIVE_FRAMEWORK_BIN=\"${TMP_SIM_X64_FRAMEWORK_BIN}\"\n      ;;\n    *) echo \"error: unsupported iOS simulator arch '${ARCH_VALUE}' for Wizig FFI build\" >&2; exit 1 ;;\n  esac\nelse\n  echo \"error: unsupported Apple platform '${PLATFORM_NAME}' for Wizig FFI build\" >&2\n  exit 1\nfi\nmkdir -p \"${OUT_FRAMEWORK_DIR}\"\ncp -f \"${ACTIVE_FRAMEWORK_BIN}\" \"${OUT_FRAMEWORK_BIN}\"\ncp -f \"${TMP_FRAMEWORK_INFO}\" \"${OUT_FRAMEWORK_INFO}\"\nif [ \"${PLATFORM_NAME}\" = \"iphoneos\" ]; then\n  if [ \"${CODE_SIGNING_ALLOWED:-NO}\" != \"YES\" ]; then\n    echo \"error: Xcode device build must allow code signing so WizigFFI.framework can be embedded\" >&2\n    exit 1\n  fi\n  ARCH_INFO=\"$(xcrun lipo -info \"${OUT_FRAMEWORK_BIN}\" 2>/dev/null || true)\"\n  if [ -z \"${ARCH_INFO}\" ]; then\n    echo \"error: failed to inspect device framework architectures for App Store safety checks\" >&2\n    exit 1\n  fi\n  if ! printf '%s' \"${ARCH_INFO}\" | grep -Eq 'arm64'; then\n    echo \"error: device framework must contain arm64 architecture (got: ${ARCH_INFO})\" >&2\n    exit 1\n  fi\n  if printf '%s' \"${ARCH_INFO}\" | grep -Eq 'x86_64|i386'; then\n    echo \"error: device framework unexpectedly contains simulator architectures (got: ${ARCH_INFO})\" >&2\n    exit 1\n  fi\n  /usr/bin/codesign --remove-signature \"${OUT_FRAMEWORK_BIN}\" 2>/dev/null || true\n  SIGNED=0\n  for SIGN_IDENTITY in \"${EXPANDED_CODE_SIGN_IDENTITY:-}\" \"${EXPANDED_CODE_SIGN_IDENTITY_NAME:-}\" \"${CODE_SIGN_IDENTITY:-}\"; do\n    if [ -z \"${SIGN_IDENTITY}\" ]; then\n      continue\n    fi\n    if /usr/bin/codesign --force --sign \"${SIGN_IDENTITY}\" --timestamp=none \"${OUT_FRAMEWORK_DIR}\"; then\n      SIGNED=1\n      break\n    fi\n  done\n  if [ \"${SIGNED}\" != \"1\" ]; then\n    echo \"error: failed to sign WizigFFI.framework (tried EXPANDED_CODE_SIGN_IDENTITY, EXPANDED_CODE_SIGN_IDENTITY_NAME, CODE_SIGN_IDENTITY)\" >&2\n    exit 1\n  fi\nfi\nif [ \"${PLATFORM_NAME}\" = \"iphoneos\" ]; then\n  LINKS=\"$(xcrun otool -L \"${OUT_FRAMEWORK_BIN}\" 2>/dev/null || true)\"\n  if [ -z \"${LINKS}\" ]; then\n    echo \"error: failed to inspect linked dylibs for App Store safety checks\" >&2\n    exit 1\n  fi\n  PRIVATE_LINKS=\"$(printf '%s\\n' \"${LINKS}\" | awk 'NR>1 {print $1}' | grep -E '(^|/)PrivateFrameworks/[^[:space:]]+\\.framework/' || true)\"\n  if [ -n \"${PRIVATE_LINKS}\" ]; then\n    echo \"error: private framework linkage detected in WizigFFI\" >&2\n    printf '%s\\n' \"${PRIVATE_LINKS}\" >&2\n    exit 1\n  fi\n  PRIVATE_API_SYMBOL_DENYLIST_REGEX=\"${WIZIG_IOS_PRIVATE_SYMBOL_DENYLIST_REGEX:-^(_MGCopyAnswer|_MGGetBoolAnswer|_OBJC_(CLASS|METACLASS)_[$]_LSApplicationWorkspace|_OBJC_(CLASS|METACLASS)_[$]_LSApplicationProxy)$}\"\n  if UNDEF=\"$(xcrun dyld_info -imports \"${OUT_FRAMEWORK_BIN}\" 2>/dev/null | awk '/^[[:space:]]*_/ { print $1 }')\"; then\n    :\n  elif UNDEF=\"$(xcrun nm -u -j \"${OUT_FRAMEWORK_BIN}\" 2>/dev/null)\"; then\n    :\n  else\n    echo \"error: failed to inspect imported symbols for App Store safety checks\" >&2\n    exit 1\n  fi\n  PRIVATE_SYMBOLS=\"$(printf '%s\\n' \"${UNDEF}\" | grep -E \"${PRIVATE_API_SYMBOL_DENYLIST_REGEX}\" || true)\"\n  if [ -n \"${PRIVATE_SYMBOLS}\" ]; then\n    echo \"error: imported private iOS symbols detected in WizigFFI\" >&2\n    printf '%s\\n' \"${PRIVATE_SYMBOLS}\" >&2\n    exit 1\n  fi\nfi\nSIM_XC_FRAMEWORK_DIR=\"${TMP_SIM_ARM64_FRAMEWORK_DIR}\"\nif [ \"${HAS_SIM_X64}\" = \"1\" ]; then\n  mkdir -p \"${TMP_SIM_UNIVERSAL_FRAMEWORK_DIR}\"\n  xcrun lipo -create \"${TMP_SIM_ARM64_FRAMEWORK_BIN}\" \"${TMP_SIM_X64_FRAMEWORK_BIN}\" -output \"${TMP_SIM_UNIVERSAL_FRAMEWORK_BIN}\"\n  prepare_framework_metadata \"${TMP_SIM_UNIVERSAL_FRAMEWORK_DIR}\"\n  SIM_XC_FRAMEWORK_DIR=\"${TMP_SIM_UNIVERSAL_FRAMEWORK_DIR}\"\nfi\nxcodebuild -create-xcframework -framework \"${TMP_DEVICE_FRAMEWORK_DIR}\" -framework \"${SIM_XC_FRAMEWORK_DIR}\" -output \"${TMP_XCFRAMEWORK_DIR}\" >/dev/null\nrm -rf \"${XCFRAMEWORK_DIR}\"\nmkdir -p \"${XCFRAMEWORK_DIR}\"\ncp -R \"${TMP_XCFRAMEWORK_DIR}/.\" \"${XCFRAMEWORK_DIR}\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AB25979F2F532F6600C45779 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB2597AE2F532F6800C45779 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AB2597B82F532F6800C45779 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AB2597B42F532F6800C45779 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AB2597A22F532F6600C45779 /* WizigApp */;
+			targetProxy = AB2597B32F532F6800C45779 /* PBXContainerItemProxy */;
+		};
+		AB2597BE2F532F6800C45779 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AB2597A22F532F6600C45779 /* WizigApp */;
+			targetProxy = AB2597BD2F532F6800C45779 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		AB2597C42F532F6800C45779 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AB2597C52F532F6800C45779 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		AB2597C72F532F6800C45779 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.wizig.WizigApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				XROS_DEPLOYMENT_TARGET = 26.2;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				CODE_SIGNING_ALLOWED = YES;
+				CODE_SIGNING_REQUIRED = YES;
+			};
+			name = Debug;
+		};
+		AB2597C82F532F6800C45779 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.wizig.WizigApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				XROS_DEPLOYMENT_TARGET = 26.2;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				CODE_SIGNING_ALLOWED = YES;
+				CODE_SIGNING_REQUIRED = YES;
+			};
+			name = Release;
+		};
+		AB2597CA2F532F6800C45779 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.wizig.WizigAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WizigApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/WizigApp";
+				XROS_DEPLOYMENT_TARGET = 26.2;
+			};
+			name = Debug;
+		};
+		AB2597CB2F532F6800C45779 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.wizig.WizigAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WizigApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/WizigApp";
+				XROS_DEPLOYMENT_TARGET = 26.2;
+			};
+			name = Release;
+		};
+		AB2597CD2F532F6800C45779 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.wizig.WizigAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = WizigApp;
+				XROS_DEPLOYMENT_TARGET = 26.2;
+			};
+			name = Debug;
+		};
+		AB2597CE2F532F6800C45779 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.wizig.WizigAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = WizigApp;
+				XROS_DEPLOYMENT_TARGET = 26.2;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		D0A0A0A0A0A0A0A0A0A0A003 /* XCLocalSwiftPackageReference "../.wizig/sdk/ios" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../.wizig/sdk/ios;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D0A0A0A0A0A0A0A0A0A0A002 /* Wizig */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Wizig;
+		};
+/* End XCSwiftPackageProductDependency section */
+
+/* Begin XCConfigurationList section */
+		AB25979E2F532F6600C45779 /* Build configuration list for PBXProject "WizigApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB2597C42F532F6800C45779 /* Debug */,
+				AB2597C52F532F6800C45779 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AB2597C62F532F6800C45779 /* Build configuration list for PBXNativeTarget "WizigApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB2597C72F532F6800C45779 /* Debug */,
+				AB2597C82F532F6800C45779 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AB2597C92F532F6800C45779 /* Build configuration list for PBXNativeTarget "WizigAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB2597CA2F532F6800C45779 /* Debug */,
+				AB2597CB2F532F6800C45779 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AB2597CC2F532F6800C45779 /* Build configuration list for PBXNativeTarget "WizigAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AB2597CD2F532F6800C45779 /* Debug */,
+				AB2597CE2F532F6800C45779 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AB25979B2F532F6600C45779 /* Project object */;
+}

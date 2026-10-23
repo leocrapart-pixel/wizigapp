@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "manifest_schema_version": 1,
+  "manifest_sha256": "b0d4ebc014b9b21551ddc697f0fc4836bad869395de78c0052bf1acf7a9b90a0",
+  "created_at_unix": 1792771859,
+  "tools": {
+    "zig": {
+      "required": true,
+      "min_version": "0.15.1",
+      "detected": false,
+      "detected_version": null
+    },
+    "xcodebuild": {
+      "required": true,
+      "min_version": "26.0.0",
+      "detected": false,
+      "detected_version": null
+    },
+    "xcodegen": {
+      "required": false,
+      "min_version": "2.39.0",
+      "detected": false,
+      "detected_version": null
+    },
+    "java": {
+      "required": true,
+      "min_version": "21.0.0",
+      "detected": false,
+      "detected_version": null
+    },
+    "gradle": {
+      "required": true,
+      "min_version": "9.2.1",
+      "detected": false,
+      "detected_version": null
+    },
+    "adb": {
+      "required": true,
+      "min_version": "1.0.41",
+      "detected": false,
+      "detected_version": null
+    }
+  }
+}

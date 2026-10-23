@@ -1,0 +1,70 @@
+name: android-apk
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: android-apk-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  build-apk:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # The vendored Wizig runtime template needs std.atomic.Mutex, which lands
+      # in Zig 0.16.0 — 0.15.x from the framework's toolchains.toml is too old.
+      - name: Set up Zig 0.16.0
+        uses: mlugg/setup-zig@v2
+        with:
+          version: 0.16.0
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - name: Install pinned Wizig CLI
+        run: |
+          set -euo pipefail
+          NAME=wizig-nightly-20261023-c768ed10-linux-x86_64
+          BASE="https://github.com/wizig-org/wizig/releases/download/nightly-20261023"
+          curl -fsSL -o "/tmp/$NAME.tar.gz" "$BASE/$NAME.tar.gz"
+          curl -fsSL -o "/tmp/$NAME.tar.gz.sha256" "$BASE/$NAME.tar.gz.sha256"
+          (cd /tmp && sha256sum -c "$NAME.tar.gz.sha256")
+          tar -xzf "/tmp/$NAME.tar.gz" -C "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/$NAME/bin" >> "$GITHUB_PATH"
+
+      - name: Run Zig unit tests
+        run: zig test lib/main.zig
+
+      - name: Generate Wizig bridge bindings
+        run: wizig codegen . --allow-toolchain-drift
+
+      - name: Build debug APK
+        working-directory: android
+        run: ./gradlew :app:assembleDebug --no-daemon --console=plain --stacktrace
+
+      - name: Inspect APK
+        run: |
+          set -euo pipefail
+          APK=$(ls android/app/build/outputs/apk/debug/*.apk)
+          ls -lh "$APK"
+          sha256sum "$APK"
+          unzip -l "$APK" | grep -E 'classes\.dex|lib/.*\.so' || true
+
+      - name: Upload debug APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: wizigapp-debug-apk
+          path: android/app/build/outputs/apk/debug/*.apk
+          if-no-files-found: error

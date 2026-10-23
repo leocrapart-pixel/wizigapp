@@ -1,0 +1,11 @@
+schema_version: 2
+name: WizigApp
+description: Wizig application scaffold.
+platforms:
+  - ios
+  - android
+paths:
+  sdk: .wizig/sdk
+  runtime: .wizig/runtime
+  generated: .wizig/generated
+  plugins: plugins
