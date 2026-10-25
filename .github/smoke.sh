@@ -1,7 +1,7 @@
 #!/bin/sh
 # Drives the installed WizigApp on a booted emulator: scrolls the calculator
-# list, taps every calculator button and fails with logs if the process dies
-# or no result shows up. POSIX sh (the Android emulator runner gives us dash).
+# list, taps every calculator button, and fails with logs if the process dies
+# or a tap renders no new output. POSIX sh (the emulator runner gives us dash).
 set -u
 
 cd "$(dirname "$0")/.." || exit 2
@@ -23,13 +23,17 @@ collect() {
 }
 
 dump() {
-    adb shell uiautomator dump "/sdcard/$1" 2>&1 | tr -d '\r'
+    adb shell uiautomator dump "/sdcard/$1" >/dev/null 2>&1 || true
     adb pull "/sdcard/$1" "$1" >/dev/null 2>&1 || true
     [ -s "$1" ]
 }
 
 shot() {
     adb exec-out screencap -p > "shot-$1.png" 2>/dev/null || true
+}
+
+texts() {
+    python3 .github/ui_texts.py "$1" 2>/dev/null | LC_ALL=C sort > "$2" || true
 }
 
 adb logcat -c 2>/dev/null || true
@@ -51,6 +55,7 @@ if [ -z "$PID" ]; then
 fi
 
 : > ui-texts.txt
+: > results.txt
 TAPPED=""
 page=0
 while [ "$page" -lt 9 ]; do
@@ -60,6 +65,7 @@ while [ "$page" -lt 9 ]; do
         collect
         exit 1
     fi
+    texts ui.xml before.txt
     python3 .github/ui_targets.py ui.xml > targets.txt 2>/dev/null || true
     echo "--- page $page targets ---"
     cat targets.txt
@@ -68,6 +74,8 @@ while [ "$page" -lt 9 ]; do
         case "${label:-}" in ""|"#"*) continue ;; esac
         case "|$TAPPED|" in *"|$label|"*) continue ;; esac
         TAPPED="$TAPPED|$label"
+
+        safe=$(printf '%s' "$label" | tr ' ' '-')
         echo "=== tapping: $label ($x,$y) on page $page ==="
         adb shell input tap "$x" "$y"
         sleep 2
@@ -78,19 +86,36 @@ while [ "$page" -lt 9 ]; do
             collect
             exit 1
         fi
-        sleep 1
-        safe=$(printf '%s' "$label" | tr ' ' '-')
+
         shot "$safe"
-        if dump "after-$safe.xml"; then
-            {
-                echo "--- after tapping $label ---"
-                python3 .github/ui_texts.py "after-$safe.xml" || true
-            } >> ui-texts.txt
-            echo "rendered after $label:"
-            python3 .github/ui_texts.py "after-$safe.xml" | tail -5 || true
-        else
-            echo "no UI dump after $label (screenshot kept)"
+        if ! dump "after-$safe.xml"; then
+            echo "### no UI dump after $label"
+            collect
+            exit 1
         fi
+        texts "after-$safe.xml" after.txt
+        NEW=$(LC_ALL=C comm -13 before.txt after.txt | grep -c . || true)
+        echo "new text nodes after $label: $NEW"
+
+        if [ "$NEW" -eq 0 ]; then
+            echo "no output after $label, tapping once more"
+            adb shell input tap "$x" "$y"
+            sleep 2
+            dump "after-$safe.xml" || true
+            texts "after-$safe.xml" after.txt
+            NEW=$(LC_ALL=C comm -13 before.txt after.txt | grep -c . || true)
+            if [ "$NEW" -eq 0 ]; then
+                echo "### NO OUTPUT for $label (tap did not render a result)"
+                collect
+                exit 1
+            fi
+        fi
+
+        echo "$label -> $(LC_ALL=C comm -13 before.txt after.txt | grep . | head -1)" >> results.txt
+        {
+            echo "--- after tapping $label ---"
+            cat after.txt
+        } >> ui-texts.txt
     done < targets.txt
 
     adb shell input swipe 160 470 160 250 300 >/dev/null 2>&1 || true
@@ -99,14 +124,8 @@ done
 
 COUNT=$(printf '%s' "$TAPPED" | tr '|' '\n' | grep -c . || true)
 echo "buttons exercised: $COUNT -> $TAPPED"
-
-if ! grep -q "Your number:" ui-texts.txt; then
-    echo "NO RESULT RENDERED for the random number calculator"
-    collect
-    exit 1
-fi
-echo "random number result rendered:"
-grep -A2 "after tapping Pick a number" ui-texts.txt | head -5
+echo "--- results observed ---"
+cat results.txt
 
 if [ "$COUNT" -lt 7 ]; then
     echo "only $COUNT of 7 calculators were reachable"
@@ -114,7 +133,7 @@ if [ "$COUNT" -lt 7 ]; then
     exit 1
 fi
 
-echo "all 7 calculators ran on device"
+echo "all 7 calculators ran on device and rendered output"
 adb shell am force-stop dev.wizig.wizigapp || true
 collect
 grep -E "WizigZig|FATAL|AndroidRuntime|libc.*signal" logcat-full.txt | tail -20 || true
