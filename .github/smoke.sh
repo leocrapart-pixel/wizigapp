@@ -1,7 +1,7 @@
 #!/bin/sh
-# Drives the installed WizigApp on a booted emulator: taps every calculator
-# button and fails with logs if the process dies. POSIX sh (the Android
-# emulator runner does not give us bash).
+# Drives the installed WizigApp on a booted emulator: scrolls the calculator
+# list, taps every calculator button and fails with logs if the process dies
+# or no result shows up. POSIX sh (the Android emulator runner gives us dash).
 set -u
 
 cd "$(dirname "$0")/.." || exit 2
@@ -22,6 +22,12 @@ collect() {
     adb logcat -b crash -d > crash.txt 2>/dev/null || true
 }
 
+dump() {
+    adb shell uiautomator dump "/sdcard/$1" >/dev/null 2>&1 || true
+    adb pull "/sdcard/$1" "$1" >/dev/null 2>&1 || true
+    [ -s "$1" ]
+}
+
 adb logcat -c 2>/dev/null || true
 adb install -r "$APK" || {
     echo "INSTALL FAILED"
@@ -40,70 +46,62 @@ if [ -z "$PID" ]; then
     exit 1
 fi
 
-adb shell uiautomator dump /sdcard/ui.xml >/dev/null 2>&1 || true
-adb pull /sdcard/ui.xml ui.xml >/dev/null 2>&1 || true
-
-if [ ! -s ui.xml ]; then
-    echo "uiautomator dump unavailable; dumping window hierarchy instead"
-    adb shell dumpsys window windows > window.txt 2>/dev/null || true
-fi
-
-python3 - <<'PY' > targets.txt 2>&1
-import re
-import xml.etree.ElementTree as ET
-
-wanted = {"Pick a number", "Roll", "Flip the coin", "Generate", "Split", "Calculate", "Grow it"}
-try:
-    root = ET.parse("ui.xml").getroot()
-except Exception as exc:  # noqa: BLE001 - diagnostics only
-    print("dump parse failed:", exc)
-    raise SystemExit(0)
-
-found = 0
-for node in root.iter("node"):
-    text = (node.get("text") or "").strip()
-    if text not in wanted:
-        continue
-    bounds = node.get("bounds") or ""
-    match = re.match(r"\[(\d+),(\d+)\]\[(\d+),(\d+)\]", bounds)
-    if not match:
-        continue
-    left, top, right, bottom = (int(g) for g in match.groups())
-    print(f"{(left + right) // 2} {(top + bottom) // 2} {text}")
-    found += 1
-print("# buttons:", found, file=open("buttons.txt", "w"))
-PY
-
-echo "--- buttons found on screen ---"
-grep -v '^#' targets.txt || true
-FOUND=$(grep -c . targets.txt 2>/dev/null || echo 0)
-echo "buttons found: $FOUND"
-if [ "$FOUND" -eq 0 ]; then
-    echo "NO CALCULATOR BUTTONS FOUND - the UI did not render the calculators"
+: > ui-texts.txt
+TAPPED=""
+page=0
+while [ "$page" -lt 5 ]; do
+    page=$((page + 1))
+    if ! dump ui.xml; then
+        echo "no uiautomator dump on page $page (black screen?)"
+        collect
+        exit 1
+    fi
+    python3 .github/ui_targets.py ui.xml > targets.txt 2>/dev/null || true
+    echo "--- page $page targets ---"
     cat targets.txt
-    adb shell dumpsys window windows > window.txt 2>/dev/null || true
+
+    while read -r x y label; do
+        case "${label:-}" in ""|"#"*) continue ;; esac
+        case "|$TAPPED|" in *"|$label|"*) continue ;; esac
+        TAPPED="$TAPPED|$label"
+        echo "=== tapping: $label ($x,$y) on page $page ==="
+        adb shell input tap "$x" "$y"
+        sleep 2
+        P=$(pid_of_app)
+        echo "pid: ${P:-<dead>}"
+        if [ -z "$P" ]; then
+            echo "### CRASH AFTER TAPPING: $label"
+            collect
+            exit 1
+        fi
+        if dump ui2.xml; then
+            { echo "--- after tapping $label ---"; python3 .github/ui_texts.py ui2.xml || true; } >> ui-texts.txt
+        fi
+    done < targets.txt
+
+    adb shell input swipe 160 560 160 200 250 >/dev/null 2>&1 || true
+    sleep 1
+done
+
+COUNT=$(printf '%s' "$TAPPED" | tr '|' '\n' | grep -c . || true)
+echo "buttons exercised: $COUNT -> $TAPPED"
+
+if ! grep -q "Your number:" ui-texts.txt; then
+    echo "NO RESULT RENDERED for the random number calculator"
+    collect
+    exit 1
+fi
+echo "random number result rendered:"
+grep -A2 "after tapping Pick a number" ui-texts.txt | head -5
+
+if [ "$COUNT" -lt 7 ]; then
+    echo "only $COUNT of 7 calculators were reachable"
     collect
     exit 1
 fi
 
-while read -r x y label; do
-    case "${label:-}" in ""|"#"*) continue ;; esac
-    echo "=== tapping: $label ($x,$y) ==="
-    adb shell input tap "$x" "$y"
-    sleep 2
-    P=$(pid_of_app)
-    echo "pid: ${P:-<dead>}"
-    if [ -z "$P" ]; then
-        echo "### CRASH AFTER TAPPING: $label"
-        collect
-        echo "### tombsones:"
-        adb shell "ls -l /data/tombstones 2>/dev/null" || true
-        exit 1
-    fi
-done < targets.txt
-
-echo "all calculator buttons survived"
+echo "all 7 calculators ran on device"
 adb shell am force-stop dev.wizig.wizigapp || true
 collect
-grep -E "WizigZig|FATAL|AndroidRuntime|libc.*signal" logcat-full.txt | tail -30 || true
+grep -E "WizigZig|FATAL|AndroidRuntime|libc.*signal" logcat-full.txt | tail -20 || true
 exit 0
