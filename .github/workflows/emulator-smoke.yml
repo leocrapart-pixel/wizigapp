@@ -60,12 +60,14 @@ jobs:
           disable-animations: true
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -no-snapshot
           script: |
-            set -uo pipefail
+            # note: the runner executes this with sh (dash), not bash
             APK=$(ls android/app/build/outputs/apk/debug/*.apk)
-            adb install -r "$APK" || { echo "INSTALL FAILED"; adb logcat -b crash -d; exit 1; }
+            adb install -r "$APK" || { echo "INSTALL FAILED"; adb logcat -b crash -d > crash.txt; exit 1; }
 
+            adb logcat -c || true
             adb shell am start -W -n dev.wizig.wizigapp/.MainActivity
             sleep 6
+            adb shell pidof dev.wizig.wizigapp || true
 
             if ! adb shell pidof dev.wizig.wizigapp >/dev/null; then
               echo "APP CRASHED AT LAUNCH"
@@ -107,6 +109,7 @@ jobs:
                 adb logcat -d > logcat-full.txt
                 echo "### tombstone summary:"
                 adb shell "ls -l /data/tombstones 2>/dev/null" || true
+                adb shell "run-as dev.wizig.wizigapp ls files 2>/dev/null" || true
                 exit 1
               fi
             done < targets.txt
