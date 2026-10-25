@@ -1,0 +1,128 @@
+name: emulator-smoke
+
+# Boots an Android emulator, installs the debug APK, taps every calculator
+# button and captures logcat. Manual: Actions -> emulator-smoke -> Run workflow.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Zig 0.16.0
+        uses: mlugg/setup-zig@v2
+        with:
+          version: 0.16.0
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - name: Install pinned Wizig CLI
+        run: |
+          set -euo pipefail
+          NAME=wizig-nightly-20261023-c768ed10-linux-x86_64
+          BASE="https://github.com/wizig-org/wizig/releases/download/nightly-20261023"
+          curl -fsSL -o "/tmp/$NAME.tar.gz" "$BASE/$NAME.tar.gz"
+          curl -fsSL -o "/tmp/$NAME.tar.gz.sha256" "$BASE/$NAME.tar.gz.sha256"
+          (cd /tmp && sha256sum -c "$NAME.tar.gz.sha256")
+          tar -xzf "/tmp/$NAME.tar.gz" -C "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/$NAME/bin" >> "$GITHUB_PATH"
+
+      - name: Generate bindings and build debug APK
+        run: |
+          wizig codegen . --allow-toolchain-drift
+          (cd android && ./gradlew :app:assembleDebug --no-daemon --console=plain)
+
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' \
+            | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+
+      - name: Boot emulator and exercise every calculator
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 35
+          target: google_apis
+          arch: x86_64
+          disable-animations: true
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -no-snapshot
+          script: |
+            set -uo pipefail
+            APK=$(ls android/app/build/outputs/apk/debug/*.apk)
+            adb install -r "$APK" || { echo "INSTALL FAILED"; adb logcat -b crash -d; exit 1; }
+
+            adb shell am start -W -n dev.wizig.wizigapp/.MainActivity
+            sleep 6
+
+            if ! adb shell pidof dev.wizig.wizigapp >/dev/null; then
+              echo "APP CRASHED AT LAUNCH"
+              adb logcat -b crash -d
+              adb logcat -d > logcat-full.txt
+              exit 1
+            fi
+
+            adb shell uiautomator dump /sdcard/ui.xml >/dev/null 2>&1
+            adb pull /sdcard/ui.xml ui.xml >/dev/null 2>&1
+
+            python3 - <<'PY' > targets.txt
+            import re
+            import xml.etree.ElementTree as ET
+
+            root = ET.parse('ui.xml').getroot()
+            wanted = {"Pick a number", "Roll", "Flip the coin", "Generate", "Split", "Calculate", "Grow it"}
+            for node in root.iter('node'):
+                text = node.get('text') or ''
+                if text in wanted:
+                    m = re.match(r'\[(\d+),(\d+)\]\[(\d+),(\d+)\]', node.get('bounds', ''))
+                    if m:
+                        x = (int(m.group(1)) + int(m.group(3))) // 2
+                        y = (int(m.group(2)) + int(m.group(4))) // 2
+                        print(f"{x} {y} {text}")
+            PY
+
+            echo "--- buttons found on screen ---"
+            cat targets.txt
+
+            while read -r x y label; do
+              [ -z "${label:-}" ] && continue
+              echo "=== tapping: $label ($x,$y) ==="
+              adb shell input tap "$x" "$y"
+              sleep 2
+              if ! adb shell pidof dev.wizig.wizigapp >/dev/null; then
+                echo "### CRASH AFTER TAPPING: $label"
+                adb logcat -b crash -d | tee crash.txt
+                adb logcat -d > logcat-full.txt
+                echo "### tombstone summary:"
+                adb shell "ls -l /data/tombstones 2>/dev/null" || true
+                exit 1
+              fi
+            done < targets.txt
+
+            echo "all buttons survived"
+            adb logcat -d > logcat-full.txt
+            adb logcat -b crash -d > crash.txt || true
+            grep -E "WizigZig|FATAL|AndroidRuntime" logcat-full.txt | tail -40 || true
+
+      - name: Upload logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: emulator-logs
+          path: |
+            logcat-full.txt
+            crash.txt
+            targets.txt
+          if-no-files-found: ignore
