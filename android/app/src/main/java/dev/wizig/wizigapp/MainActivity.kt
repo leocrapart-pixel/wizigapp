@@ -45,7 +45,9 @@ class MainActivity : ComponentActivity() {
             // scope that has libc in it. Loading the FFI library on its own
             // (which is what the generated bridge does) fails on x86_64 and
             // crashes on the first TLS access on arm64.
-            System.loadLibrary("wizigjni")
+            // runCatching keeps a missing library on the error-card path instead
+            // of failing class initialisation and killing the process.
+            runCatching { System.loadLibrary("wizigjni") }
         }
     }
 

@@ -46,6 +46,35 @@ cd android && ./gradlew :app:assembleDebug  # APK -> android/app/build/outputs/a
 
 Run with `adb install -r android/app/build/outputs/apk/debug/app-debug.apk`.
 
+## Emulator smoke test
+
+`.github/workflows/emulator-smoke.yml` (manual: *Run workflow*) boots an API 35
+emulator, installs the APK, scrolls the calculator list, taps every button and
+fails unless each one renders new output. The same harness runs locally against
+any booted device:
+
+```sh
+sh .github/smoke.sh
+```
+
+## Known upstream rough edges
+
+- **FFI library has no bionic dependency.** The scaffolded Gradle FFI task runs
+  `zig build-lib` without `-lc` (Zig 0.16 cannot link bionic for Android
+  targets), so `libwizigffi.so` carries TLS segments but no `DT_NEEDED` on
+  `libc.so`. On x86_64 `dlopen` fails with `cannot locate symbol
+  __tls_get_addr`; on arm64 the library loads but faults on the first TLS
+  access — which looks like "the app closes when you tap a button".
+  `MainActivity` loads `libwizigjni` first: it links both `libwizigffi` and
+  libc, so the linker resolves the FFI library's symbols inside a scope that
+  has libc. A proper fix is to link the FFI library against bionic (NDK clang)
+  once upstream supports it.
+- **Zig version.** `toolchains.toml` advertises 0.15.1, but the 20261023
+  runtime template needs `std.atomic.Mutex`, which only exists in 0.16.0
+  (0.17.0 rejects the template syntax). CI pins 0.16.0.
+- **Gradle wrapper jar.** `wizig create` emits `gradlew` but not
+  `gradle-wrapper.jar`; the jar for Gradle 9.2.1 is committed here.
+
 ## Layout
 
 - `lib/`: shared Zig logic (the only file the app author edits per calculator).
