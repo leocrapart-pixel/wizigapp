@@ -49,7 +49,7 @@ fi
 : > ui-texts.txt
 TAPPED=""
 page=0
-while [ "$page" -lt 5 ]; do
+while [ "$page" -lt 9 ]; do
     page=$((page + 1))
     if ! dump ui.xml; then
         echo "no uiautomator dump on page $page (black screen?)"
@@ -75,11 +75,16 @@ while [ "$page" -lt 5 ]; do
             exit 1
         fi
         if dump ui2.xml; then
-            { echo "--- after tapping $label ---"; python3 .github/ui_texts.py ui2.xml || true; } >> ui-texts.txt
+            {
+                echo "--- after tapping $label ---"
+                python3 .github/ui_texts.py ui2.xml || true
+            } >> ui-texts.txt
+            echo "rendered after $label:"
+            python3 .github/ui_texts.py ui2.xml | tail -4 || true
         fi
     done < targets.txt
 
-    adb shell input swipe 160 560 160 200 250 >/dev/null 2>&1 || true
+    adb shell input swipe 160 470 160 250 300 >/dev/null 2>&1 || true
     sleep 1
 done
 

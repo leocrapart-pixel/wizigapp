@@ -70,4 +70,6 @@ jobs:
             logcat-full.txt
             crash.txt
             targets.txt
+            ui-texts.txt
+            ui.xml
           if-no-files-found: ignore
