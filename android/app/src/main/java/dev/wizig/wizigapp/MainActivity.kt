@@ -36,6 +36,19 @@ import dev.wizig.WizigGeneratedApi
 import dev.wizig.wizigapp.ui.theme.WizigAppTheme
 
 class MainActivity : ComponentActivity() {
+    companion object {
+        init {
+            // The Zig FFI library is built without a bionic dependency, so its
+            // thread-local symbols (__tls_get_addr) only resolve if the linker
+            // sees libc while loading it. libwizigjni links both the FFI library
+            // and libc, so loading it first loads the FFI library in a linker
+            // scope that has libc in it. Loading the FFI library on its own
+            // (which is what the generated bridge does) fails on x86_64 and
+            // crashes on the first TLS access on arm64.
+            System.loadLibrary("wizigjni")
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -62,7 +75,8 @@ private class Calculators(private val api: WizigGeneratedApi) {
 
 @Composable
 private fun CalculatorScreen(modifier: Modifier = Modifier) {
-    val calculations = remember { runCatching { Calculators(WizigGeneratedApi()) }.getOrNull() }
+    val setup = remember { runCatching { Calculators(WizigGeneratedApi()) } }
+    val calculations = setup.getOrNull()
 
     Column(
         modifier = modifier
@@ -83,7 +97,8 @@ private fun CalculatorScreen(modifier: Modifier = Modifier) {
                 colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.errorContainer),
             ) {
                 Text(
-                    "Native Wizig library unavailable on this device build.",
+                    "Native Wizig runtime unavailable: " +
+                        (setup.exceptionOrNull()?.message ?: "unknown error"),
                     modifier = Modifier.padding(16.dp),
                     color = MaterialTheme.colorScheme.onErrorContainer,
                 )

@@ -75,8 +75,16 @@ print("# buttons:", found, file=open("buttons.txt", "w"))
 PY
 
 echo "--- buttons found on screen ---"
-grep -v '^#' targets.txt | grep -v '# buttons' || true
-cat buttons.txt 2>/dev/null || true
+grep -v '^#' targets.txt || true
+FOUND=$(grep -c . targets.txt 2>/dev/null || echo 0)
+echo "buttons found: $FOUND"
+if [ "$FOUND" -eq 0 ]; then
+    echo "NO CALCULATOR BUTTONS FOUND - the UI did not render the calculators"
+    cat targets.txt
+    adb shell dumpsys window windows > window.txt 2>/dev/null || true
+    collect
+    exit 1
+fi
 
 while read -r x y label; do
     case "${label:-}" in ""|"#"*) continue ;; esac
