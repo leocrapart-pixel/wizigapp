@@ -23,9 +23,13 @@ collect() {
 }
 
 dump() {
-    adb shell uiautomator dump "/sdcard/$1" >/dev/null 2>&1 || true
+    adb shell uiautomator dump "/sdcard/$1" 2>&1 | tr -d '\r'
     adb pull "/sdcard/$1" "$1" >/dev/null 2>&1 || true
     [ -s "$1" ]
+}
+
+shot() {
+    adb exec-out screencap -p > "shot-$1.png" 2>/dev/null || true
 }
 
 adb logcat -c 2>/dev/null || true
@@ -74,13 +78,18 @@ while [ "$page" -lt 9 ]; do
             collect
             exit 1
         fi
-        if dump ui2.xml; then
+        sleep 1
+        safe=$(printf '%s' "$label" | tr ' ' '-')
+        shot "$safe"
+        if dump "after-$safe.xml"; then
             {
                 echo "--- after tapping $label ---"
-                python3 .github/ui_texts.py ui2.xml || true
+                python3 .github/ui_texts.py "after-$safe.xml" || true
             } >> ui-texts.txt
             echo "rendered after $label:"
-            python3 .github/ui_texts.py ui2.xml | tail -4 || true
+            python3 .github/ui_texts.py "after-$safe.xml" | tail -5 || true
+        else
+            echo "no UI dump after $label (screenshot kept)"
         fi
     done < targets.txt
 

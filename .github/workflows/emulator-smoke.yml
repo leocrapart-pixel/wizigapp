@@ -72,4 +72,6 @@ jobs:
             targets.txt
             ui-texts.txt
             ui.xml
+            after-*.xml
+            shot-*.png
           if-no-files-found: ignore
