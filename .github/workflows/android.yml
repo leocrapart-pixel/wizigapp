@@ -65,6 +65,7 @@ jobs:
       - name: Upload debug APK
         uses: actions/upload-artifact@v4
         with:
-          name: wizigapp-debug-apk
+          # build number keeps downloads distinguishable (they used to share a name)
+          name: wizigapp-debug-apk-b${{ github.run_number }}
           path: android/app/build/outputs/apk/debug/*.apk
           if-no-files-found: error

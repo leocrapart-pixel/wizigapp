@@ -4,6 +4,8 @@ name: emulator-smoke
 # button and captures logcat. Manual: Actions -> emulator-smoke -> Run workflow.
 
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
 
 permissions:

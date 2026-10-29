@@ -89,6 +89,11 @@ private fun CalculatorScreen(modifier: Modifier = Modifier) {
     ) {
         Text("🐣 WizigApp", style = MaterialTheme.typography.headlineMedium)
         Text(
+            "build ${BuildConfig.VERSION_NAME}",
+            style = MaterialTheme.typography.labelMedium,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+        )
+        Text(
             "Random little calculators. The math runs in shared Zig code, the UI is Jetpack Compose.",
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
